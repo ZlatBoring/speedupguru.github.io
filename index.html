@@ -12,24 +12,14 @@
     <link type="text/css" media="all" href="./assets/css/theme.scss.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="./assets/css/slick.css" />
     <link rel="stylesheet" type="text/css" href="./assets/css/slick-theme.css" />
-
-    <style>
-        @font-face {
-            font-family: 'Lato-Regular';
-            src: url('./assets/css/Lato-Regular.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        h2 {
-            font-family: 'Lato-Regular' !important;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
     <script src="./assets/js/vendor.js" type="text/javascript"></script>
     <script src="./assets/js/init.js" type="text/javascript"></script>
     <script src="./assets/js/theme.js" type="text/javascript"></script>
     <script src="./assets/js/slick.js" type="text/javascript" defer="defer"></script>
+    <script src="./assets/js/main.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -94,7 +84,7 @@
             <!-- HERO IMAGE SECTION --->
             <div id="shopify-section-hero" class="shopify-section index-section index-section--flush">
                 <div data-section-id="hero" data-section-type="hero-section">
-                    <div class="hero hero--large hero-hero hero__overlay box ratio-container js" id="Hero-hero" data-layout="full_width" style="background-position: center top; background-image: url('https://cdn.shopify.com/s/files/1/0260/1061/5830/files/homepage-slide-1.png?v=1583788039');">
+                    <div class="hero hero--large hero-hero hero__overlay box ratio-container js" id="Hero-hero" data-layout="full_width">
                         <div class="hero__inner">
                             <div class="page-width text-center">
                                 <h2 class="h1 mega-title mega-title--large">Chic handbags reimagined for modern life.</h2>
@@ -125,15 +115,6 @@
                                     <img src="./assets/im/studio_bag_01_1024x1024@2x.png" alt="Load image into Gallery viewer, Studio Bag">
                                 </div>
                             </section>
-                            <script>
-                                $(".center").slick({
-                                    dots: true,
-                                    infinite: true,
-                                    speed: 300,
-                                    slidesToShow: 1,
-                                    adaptiveHeight: true
-                                });
-                            </script>
                         </div>
                         <div class="grid__item medium-up--one-half">
                             <h1 class="product-single__title">Studio Bag</h1>
@@ -206,42 +187,6 @@
         </main>
         <!-- FOOTER SECTION --->
         <div id="shopify-section-footer" class="shopify-section">
-            <style>
-                .site-footer__hr {
-                    border-bottom: 1px solid #dddddd;
-                }
-
-                .site-footer p,
-                .site-footer__linklist-item a,
-                .site-footer__rte a,
-                .site-footer h4,
-                .site-footer small,
-                .site-footer__copyright-content a,
-                .site-footer__newsletter-error,
-                .site-footer__social-icons .social-icons__link {
-                    color: #333232;
-                }
-
-                .site-footer {
-                    color: #333232;
-                    background-color: #f6f6f6;
-                }
-
-                .site-footer__rte a {
-                    border-bottom: 1px solid #333232;
-                }
-
-                .site-footer__rte a:hover,
-                .site-footer__linklist-item a:hover,
-                .site-footer__copyright-content a:hover {
-                    color: #5a5858;
-                    border-bottom: 1px solid #5a5858;
-                }
-
-                .site-footer__social-icons .social-icons__link:hover {
-                    color: #5a5858;
-                }
-            </style>
             <footer class="site-footer" role="contentinfo" data-section-id="footer" data-section-type="footer-section">
                 <div class="page-width">
                     <div class="grid grid--no-gutters small--text-center grid--footer-float-right">
