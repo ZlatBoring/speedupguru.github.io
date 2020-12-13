@@ -21,172 +21,172 @@
         define(['jquery'], factory);
     } else if (typeof exports !== 'undefined') {
         module.exports = factory(require('jquery'));
-    } else {			
+    } else {
         factory(jQuery);
     }
 
 }(function($) {
     'use strict';
-		var Slick = window.Slick || {};
-		
-		Slick = (function() {
+    var Slick = window.Slick || {};
 
-			var instanceUid = 0;
+    Slick = (function() {
 
-			function Slick(element, settings) {
+        var instanceUid = 0;
 
-					var _ = this, dataSettings;
+        function Slick(element, settings) {
 
-					_.defaults = {
-							accessibility: true,
-							adaptiveHeight: false,
-							appendArrows: $(element),
-							appendDots: $(element),
-							arrows: true,
-							asNavFor: null,
-							prevArrow: '<button class="slick-prev" aria-label="Previous" type="button">Previous</button>',
-							nextArrow: '<button class="slick-next" aria-label="Next" type="button">Next</button>',
-							autoplay: false,
-							autoplaySpeed: 3000,
-							centerMode: false,
-							centerPadding: '50px',
-							cssEase: 'ease',
-							customPaging: function(slider, i) {
-									return $('<button type="button" />').text(i + 1);
-							},
-							dots: false,
-							dotsClass: 'slick-dots',
-							draggable: true,
-							easing: 'linear',
-							edgeFriction: 0.35,
-							fade: false,
-							focusOnSelect: false,
-							focusOnChange: false,
-							infinite: true,
-							initialSlide: 0,
-							lazyLoad: 'ondemand',
-							mobileFirst: false,
-							pauseOnHover: true,
-							pauseOnFocus: true,
-							pauseOnDotsHover: false,
-							respondTo: 'window',
-							responsive: null,
-							rows: 1,
-							rtl: false,
-							slide: '',
-							slidesPerRow: 1,
-							slidesToShow: 1,
-							slidesToScroll: 1,
-							speed: 500,
-							swipe: true,
-							swipeToSlide: false,
-							touchMove: true,
-							touchThreshold: 5,
-							useCSS: true,
-							useTransform: true,
-							variableWidth: false,
-							vertical: false,
-							verticalSwiping: false,
-							waitForAnimate: true,
-							zIndex: 1000
-					};
+            var _ = this, dataSettings;
 
-					_.initials = {
-							animating: false,
-							dragging: false,
-							autoPlayTimer: null,
-							currentDirection: 0,
-							currentLeft: null,
-							currentSlide: 0,
-							direction: 1,
-							$dots: null,
-							listWidth: null,
-							listHeight: null,
-							loadIndex: 0,
-							$nextArrow: null,
-							$prevArrow: null,
-							scrolling: false,
-							slideCount: null,
-							slideWidth: null,
-							$slideTrack: null,
-							$slides: null,
-							sliding: false,
-							slideOffset: 0,
-							swipeLeft: null,
-							swiping: false,
-							$list: null,
-							touchObject: {},
-							transformsEnabled: false,
-							unslicked: false
-					};
+            _.defaults = {
+                accessibility: true,
+                adaptiveHeight: false,
+                appendArrows: $(element),
+                appendDots: $(element),
+                arrows: true,
+                asNavFor: null,
+                prevArrow: '<button class="slick-prev" aria-label="Previous" type="button">Previous</button>',
+                nextArrow: '<button class="slick-next" aria-label="Next" type="button">Next</button>',
+                autoplay: false,
+                autoplaySpeed: 3000,
+                centerMode: false,
+                centerPadding: '50px',
+                cssEase: 'ease',
+                customPaging: function(slider, i) {
+                    return $('<button type="button" />').text(i + 1);
+                },
+                dots: false,
+                dotsClass: 'slick-dots',
+                draggable: true,
+                easing: 'linear',
+                edgeFriction: 0.35,
+                fade: false,
+                focusOnSelect: false,
+                focusOnChange: false,
+                infinite: true,
+                initialSlide: 0,
+                lazyLoad: 'ondemand',
+                mobileFirst: false,
+                pauseOnHover: true,
+                pauseOnFocus: true,
+                pauseOnDotsHover: false,
+                respondTo: 'window',
+                responsive: null,
+                rows: 1,
+                rtl: false,
+                slide: '',
+                slidesPerRow: 1,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                speed: 500,
+                swipe: true,
+                swipeToSlide: false,
+                touchMove: true,
+                touchThreshold: 5,
+                useCSS: true,
+                useTransform: true,
+                variableWidth: false,
+                vertical: false,
+                verticalSwiping: false,
+                waitForAnimate: true,
+                zIndex: 1000
+            };
 
-					$.extend(_, _.initials);
+            _.initials = {
+                animating: false,
+                dragging: false,
+                autoPlayTimer: null,
+                currentDirection: 0,
+                currentLeft: null,
+                currentSlide: 0,
+                direction: 1,
+                $dots: null,
+                listWidth: null,
+                listHeight: null,
+                loadIndex: 0,
+                $nextArrow: null,
+                $prevArrow: null,
+                scrolling: false,
+                slideCount: null,
+                slideWidth: null,
+                $slideTrack: null,
+                $slides: null,
+                sliding: false,
+                slideOffset: 0,
+                swipeLeft: null,
+                swiping: false,
+                $list: null,
+                touchObject: {},
+                transformsEnabled: false,
+                unslicked: false
+            };
 
-					_.activeBreakpoint = null;
-					_.animType = null;
-					_.animProp = null;
-					_.breakpoints = [];
-					_.breakpointSettings = [];
-					_.cssTransitions = false;
-					_.focussed = false;
-					_.interrupted = false;
-					_.hidden = 'hidden';
-					_.paused = true;
-					_.positionProp = null;
-					_.respondTo = null;
-					_.rowCount = 1;
-					_.shouldClick = true;
-					_.$slider = $(element);
-					_.$slidesCache = null;
-					_.transformType = null;
-					_.transitionType = null;
-					_.visibilityChange = 'visibilitychange';
-					_.windowWidth = 0;
-					_.windowTimer = null;
+            $.extend(_, _.initials);
 
-					dataSettings = $(element).data('slick') || {};
+            _.activeBreakpoint = null;
+            _.animType = null;
+            _.animProp = null;
+            _.breakpoints = [];
+            _.breakpointSettings = [];
+            _.cssTransitions = false;
+            _.focussed = false;
+            _.interrupted = false;
+            _.hidden = 'hidden';
+            _.paused = true;
+            _.positionProp = null;
+            _.respondTo = null;
+            _.rowCount = 1;
+            _.shouldClick = true;
+            _.$slider = $(element);
+            _.$slidesCache = null;
+            _.transformType = null;
+            _.transitionType = null;
+            _.visibilityChange = 'visibilitychange';
+            _.windowWidth = 0;
+            _.windowTimer = null;
 
-					_.options = $.extend({}, _.defaults, settings, dataSettings);
+            dataSettings = $(element).data('slick') || {};
 
-					_.currentSlide = _.options.initialSlide;
+            _.options = $.extend({}, _.defaults, settings, dataSettings);
 
-					_.originalSettings = _.options;
+            _.currentSlide = _.options.initialSlide;
 
-					if (typeof document.mozHidden !== 'undefined') {
-							_.hidden = 'mozHidden';
-							_.visibilityChange = 'mozvisibilitychange';
-					} else if (typeof document.webkitHidden !== 'undefined') {
-							_.hidden = 'webkitHidden';
-							_.visibilityChange = 'webkitvisibilitychange';
-					}
+            _.originalSettings = _.options;
 
-					_.autoPlay = $.proxy(_.autoPlay, _);
-					_.autoPlayClear = $.proxy(_.autoPlayClear, _);
-					_.autoPlayIterator = $.proxy(_.autoPlayIterator, _);
-					_.changeSlide = $.proxy(_.changeSlide, _);
-					_.clickHandler = $.proxy(_.clickHandler, _);
-					_.selectHandler = $.proxy(_.selectHandler, _);
-					_.setPosition = $.proxy(_.setPosition, _);
-					_.swipeHandler = $.proxy(_.swipeHandler, _);
-					_.dragHandler = $.proxy(_.dragHandler, _);
-					_.keyHandler = $.proxy(_.keyHandler, _);
+            if (typeof document.mozHidden !== 'undefined') {
+                _.hidden = 'mozHidden';
+                _.visibilityChange = 'mozvisibilitychange';
+            } else if (typeof document.webkitHidden !== 'undefined') {
+                _.hidden = 'webkitHidden';
+                _.visibilityChange = 'webkitvisibilitychange';
+            }
 
-					_.instanceUid = instanceUid++;
+            _.autoPlay = $.proxy(_.autoPlay, _);
+            _.autoPlayClear = $.proxy(_.autoPlayClear, _);
+            _.autoPlayIterator = $.proxy(_.autoPlayIterator, _);
+            _.changeSlide = $.proxy(_.changeSlide, _);
+            _.clickHandler = $.proxy(_.clickHandler, _);
+            _.selectHandler = $.proxy(_.selectHandler, _);
+            _.setPosition = $.proxy(_.setPosition, _);
+            _.swipeHandler = $.proxy(_.swipeHandler, _);
+            _.dragHandler = $.proxy(_.dragHandler, _);
+            _.keyHandler = $.proxy(_.keyHandler, _);
 
-					// A simple way to check for HTML strings
-					// Strict HTML recognition (must start with <)
-					// Extracted from jQuery v1.11 source
-					_.htmlExpr = /^(?:\s*(<[\w\W]+>)[^>]*)$/;
+            _.instanceUid = instanceUid++;
+
+            // A simple way to check for HTML strings
+            // Strict HTML recognition (must start with <)
+            // Extracted from jQuery v1.11 source
+            _.htmlExpr = /^(?:\s*(<[\w\W]+>)[^>]*)$/;
 
 
-					_.registerBreakpoints();
-					_.init(true);
+            _.registerBreakpoints();
+            _.init(true);
 
-			}
+        }
 
-			return Slick;
+        return Slick;
 
-		}());
+    }());
 
     Slick.prototype.activateADA = function() {
         var _ = this;
@@ -899,9 +899,7 @@
             _.$list.detach();
 
             _.$slider.append(_.$slides);
-				}
-				
-				//aaaaqqqqq
+        }
 
         _.cleanUpRows();
 
@@ -2991,10 +2989,9 @@
 
         }
 
-		};
-		
-		document.addEventListener("DOMContentLoaded", function(event) {
-			$.fn.slick = function() {
+    };
+
+    $.fn.slick = function() {
         var _ = this,
             opt = arguments[0],
             args = Array.prototype.slice.call(arguments, 1),
@@ -3002,18 +2999,13 @@
             i,
             ret;
         for (i = 0; i < l; i++) {
-						if (typeof opt == 'object' || typeof opt == 'undefined')
-						{
-							_[i].slick = new Slick(_[i], opt);
-						}
+            if (typeof opt == 'object' || typeof opt == 'undefined')
+                _[i].slick = new Slick(_[i], opt);
             else
                 ret = _[i].slick[opt].apply(_[i].slick, args);
             if (typeof ret != 'undefined') return ret;
         }
         return _;
     };
-		});		
-
-
 
 }));
