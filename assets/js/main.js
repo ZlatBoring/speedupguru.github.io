@@ -4,5 +4,5 @@ $(".center").slick({
     speed: 300,
     slidesToShow: 1,
     adaptiveHeight: false,
-	lazyLoad: 'ondemand',
+    lazyLoad: 'ondemand',
 });
